@@ -5,7 +5,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 export default class ExampleScreen extends React.Component {
 
   static navigationOptions = {
-    title: 'Food',
+    title: 'Food Options',
   };
 
   render() {
