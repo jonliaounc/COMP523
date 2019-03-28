@@ -1,51 +1,75 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, View, Text } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { ActivityIndicator, Text, View, StyleSheet, Button } from 'react-native';
+
+var link;
 
 export default class RecipesScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Symptoms',
-  };
 
-  render() {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.headerText}>What is Your Symptom?</Text>
-
-          <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-            <Button
-              onPress={() => this.props.navigation.navigate('Type')}
-              title="Constipation"
-              color="#00B0FF"
-            />
-          </View>
-
-          <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-            <Button
-              onPress={() => this.props.navigation.navigate('Type')}
-              title="Diarrhea"
-              color="#EC407A"
-            />
-          </View>
-
-          <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-            <Button
-              onPress={() => this.props.navigation.navigate('Type')}
-              title="Mouth Sores"
-              color="#1DE9B6"
-            />
-          </View>
-
-          <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-            <Button
-              onPress={() => this.props.navigation.navigate('Type')}
-              title="Nausea"
-              color="#FF3D00"
-            />
-          </View>
-        </View>
-      );
+  constructor(props){
+    super(props);
+    this.state = {
+      isLoading: true,
+      SymptomType: this.props.navigation.state.params.SymptomType
     }
+    link = "https://fathomless-springs-92490.herokuapp.com/" + this.state.SymptomType;
+  }
+
+  componentDidMount(){
+    return fetch(link)
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({
+          isLoading: false,
+          name: responseJson[0].name,
+          description: responseJson[0].description,
+          ingredients: responseJson[0].ingredients,
+          directions: responseJson[0].directions,
+        }, function(){
+
+        });
+
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+  render(){
+
+    if(this.state.isLoading){
+      return(
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+      )
+    }
+
+    return(
+      <View style={styles.container}>
+        <Text style={styles.headerText}>{this.state.SymptomType}</Text>
+          <Text style={styles.paragraph}> This is the name: {this.state.name} {'\n'}{'\n'}</Text>
+          <Text style={styles.paragraph}> This is the description: {this.state.description} {'\n'}{'\n'}</Text>
+          <Text style={styles.paragraph}> These are the ingredients:{'\n'}</Text>
+          {
+            this.state.ingredients.map((param, i) => {
+              return (
+                <Text style={styles.paragraph}> {param} </Text>
+              )
+            })
+          }
+          <Text style={styles.paragraph}>{'\n'}{'\n'}These are the directions:{'\n'}</Text>
+          {
+            this.state.directions.map((param, i) => {
+              return (
+                <Text style={styles.paragraph}> {param} </Text>
+              )
+            })
+          }
+      </View>
+
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -61,4 +85,7 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "bold"
   },
+  paragraph: {
+    textAlign: "center"
+  }
 });
