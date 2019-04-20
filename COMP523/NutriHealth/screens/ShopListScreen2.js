@@ -57,6 +57,7 @@ export default class ShopListScreen2 extends React.Component {
 
     return(
       <View style={styles.container}>
+      <ScrollView>
         <Text style={styles.headerText}>Recipe List</Text>
         {
           arr.map((param, x) => {
@@ -71,6 +72,7 @@ export default class ShopListScreen2 extends React.Component {
             )
           })
         }
+      </ScrollView>
       </View>
 
     );

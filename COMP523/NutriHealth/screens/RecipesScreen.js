@@ -1,17 +1,16 @@
 import React from 'react';
 import { ActivityIndicator, Text, View, StyleSheet, Button } from 'react-native';
 
-var link;
-
 export default class RecipesScreen extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
       isLoading: true,
-      SymptomType: this.props.navigation.state.params.SymptomType
+      SymptomLink: this.props.navigation.state.params.SymptomLink,
+      RecipeIndex: this.props.navigation.state.params.RecipeIndex,
     }
-    link = "https://fathomless-springs-92490.herokuapp.com/" + this.state.SymptomType;
+    link = "https://fathomless-springs-92490.herokuapp.com/" + this.state.SymptomLink;
   }
 
   componentDidMount(){
@@ -21,10 +20,10 @@ export default class RecipesScreen extends React.Component {
 
         this.setState({
           isLoading: false,
-          name: responseJson[0].name,
-          description: responseJson[0].description,
-          ingredients: responseJson[0].ingredients,
-          directions: responseJson[0].directions,
+          name: responseJson[this.state.RecipeIndex].name,
+          description: responseJson[this.state.RecipeIndex].description,
+          ingredients: responseJson[this.state.RecipeIndex].ingredients,
+          directions: responseJson[this.state.RecipeIndex].directions,
         }, function(){
 
         });
@@ -47,7 +46,7 @@ export default class RecipesScreen extends React.Component {
 
     return(
       <View style={styles.container}>
-        <Text style={styles.headerText}>{this.state.SymptomType}</Text>
+        <Text style={styles.headerText}>{this.state.RecipeIndex}</Text>
           <Text style={styles.paragraph}> This is the name: {this.state.name} {'\n'}{'\n'}</Text>
           <Text style={styles.paragraph}> This is the description: {this.state.description} {'\n'}{'\n'}</Text>
           <Text style={styles.paragraph}> These are the ingredients:{'\n'}</Text>

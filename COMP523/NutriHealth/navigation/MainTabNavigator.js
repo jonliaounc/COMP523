@@ -7,15 +7,18 @@ import HomeScreen from '../screens/HomeScreen';
 import RecipesScreen from '../screens/RecipesScreen';
 import SymptomScreen from '../screens/SymptomScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
-import ShopListScreen2 from '../screens/ShopListScreen2';
+import ShopListScreen from '../screens/ShopListScreen';
+import ListScreen from '../screens/ListScreen.js';
 import FAQScreen from '../screens/FAQScreen';
+import ContactScreen from '../screens/Contact.js'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Symptom: SymptomScreen,
   Favorites: FavoritesScreen,
-  Shopping: ShopListScreen2,
-  FAQ: FAQScreen
+  Shopping: ShopListScreen,
+  FAQ: FAQScreen,
+  Contact: ContactScreen
 });
 
 HomeStack.navigationOptions = {
@@ -35,6 +38,7 @@ HomeStack.navigationOptions = {
 const RecipesStack = createStackNavigator(
   {
     Symptom: SymptomScreen,
+    List: ListScreen,
     Recipes: RecipesScreen,
   },
   {
@@ -67,7 +71,7 @@ FavoritesStack.navigationOptions = {
 };
 
 const ShopListStack = createStackNavigator({
-  ShopList: ShopListScreen2,
+  ShopList: ShopListScreen,
 });
 
 ShopListStack.navigationOptions = {
