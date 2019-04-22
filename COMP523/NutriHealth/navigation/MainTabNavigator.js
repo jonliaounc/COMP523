@@ -5,18 +5,20 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import RecipesScreen from '../screens/RecipesScreen';
-import TypeScreen from '../screens/TypeScreen';
-import ExampleScreen from '../screens/ExampleScreen';
+import SymptomScreen from '../screens/SymptomScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import ShopListScreen from '../screens/ShopListScreen';
+import ListScreen from '../screens/ListScreen.js';
 import FAQScreen from '../screens/FAQScreen';
+import ContactScreen from '../screens/Contact.js'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Recipes: RecipesScreen,
+  Symptom: SymptomScreen,
   Favorites: FavoritesScreen,
   Shopping: ShopListScreen,
-  FAQ: FAQScreen
+  FAQ: FAQScreen,
+  Contact: ContactScreen
 });
 
 HomeStack.navigationOptions = {
@@ -35,12 +37,12 @@ HomeStack.navigationOptions = {
 
 const RecipesStack = createStackNavigator(
   {
+    Symptom: SymptomScreen,
+    List: ListScreen,
     Recipes: RecipesScreen,
-    Type: TypeScreen,
-    Example: ExampleScreen
   },
   {
-    initialRouteName: "Recipes"
+    initialRouteName: "Symptom"
   }
 );
 

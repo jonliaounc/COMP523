@@ -1,10 +1,5 @@
 {
-  "expoServerNgrokUrl": "https://9q-qyh.anonymous.nutrihealth.exp.direct",
-  "packagerNgrokUrl": "https://packager.9q-qyh.anonymous.nutrihealth.exp.direct",
-  "ngrokPid": 17456,
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 17439,
-  "webpackServerPort": null
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

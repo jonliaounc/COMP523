@@ -15,7 +15,7 @@ export default class HomeScreen extends Component {
 
         <View style={[{ width: "90%", margin: 10, backgroundColor: "green" }]}>
           <Button
-            onPress={() => this.props.navigation.navigate('Recipes')}
+            onPress={() => this.props.navigation.navigate('Symptom')}
             title="Look for Recipes"
             color="#00B0FF"
           />
@@ -47,7 +47,7 @@ export default class HomeScreen extends Component {
 
         <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
           <Button
-            onPress={() => this.props.navigation.navigate('FAQ')}
+            onPress={() => this.props.navigation.navigate('Contact')}
             title="Contact Us"
             color="brown"
           />
