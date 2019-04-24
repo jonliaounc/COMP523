@@ -1,5 +1,6 @@
 import React from 'react';
-import { ActivityIndicator, Text, View, StyleSheet, Button, ScrollView } from 'react-native';
+import { ActivityIndicator, Text, View, StyleSheet, Button, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { colors } from '../src/themes';
 
 var nameArr = [];
 
@@ -57,40 +58,99 @@ export default class ListScreen extends React.Component {
     }
 
     return(
-      <View style={styles.container}>
-            <ScrollView>
-        <Text style={styles.headerText}>Recipe List</Text>
+      <ScrollView style={styles.dividers}>
+        <View style={styles.container} backgroundColor={"orange"}>
+          <Text style={styles.headerText}>Recipe List</Text>
+
+        </View>
         {
           nameArr.map((param, index) => {
             return (
-              <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]} key={index}>
-                <Button
-                  onPress={() => this.props.navigation.navigate('Recipes',  {SymptomLink: this.state.SymptomType, RecipeIndex: index})}
-                  title={param}
-                  color={ this.getRandomColor() }
-                />
-              </View>
+              // <View style={styles.container} key={index}>
+              //   <Button
+              //     onPress={() => this.props.navigation.navigate('Recipes',  {SymptomLink: this.state.SymptomType, RecipeIndex: index})}
+              //     title={param}
+              //     //color={ this.getRandomColor() }
+              //     //width="100%"
+              //     //style={styles.container}
+              //   />
+              // </View>
+              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Recipes',  {SymptomLink: this.state.SymptomType, RecipeIndex: index})}>
+                <View style={styles.container} key={index}>
+                  <Text style={styles.symptomText}>{param}</Text>
+                </View>
+              </TouchableWithoutFeedback>
             )
           })
         }
-        </ScrollView>
-      </View>
+      </ScrollView>
+
+
+      //   <TouchableWithoutFeedback
+      //     onPress={() => this.props.navigation.navigate('Recipes',  {SymptomLink: this.state.SymptomType, RecipeIndex: index})}
+      //     title={param}
+      //     //color={ this.getRandomColor()}
+      //   >
+      //     <View style={styles.container}>
+      //       <Text style={styles.headerText2}>Recipe List</Text>
+      //       {
+      //         nameArr.map((param, index) => {
+      //           return (
+      //             <View style={styles.symptomText} key={index}>
+      //             </View>
+      //           )
+      //         })
+      //       }
+      //     </View>
+      //   </TouchableWithoutFeedback>
+      // </ScrollView>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    padding:10,
+    //flex: 1,
+    //justifyContent: "center",
+    //backgroundColor: colors.primary,
+    //borderTopWidth:2,
+    //borderTopColor: colors.primary,
+    borderBottomWidth:2,
+    borderBottomColor: colors.primary,
+
+  },
+  listDividers:{
+    fontSize: 20,
+    color: 'black',
+    textAlign: "center",
+    margin:10,
+  },
+  dividers:{
+    //left: 10,
+    //position: 'absolute',
+    //bottom: 160,
+    width: "100%",
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 30,
     textAlign: "center",
     margin: 10,
     fontWeight: "bold"
+  },
+  headerText2: {
+    fontSize: 30,
+    textAlign: "center",
+    margin: 30,
+    fontWeight: "bold"
+  },
+  symptomText: {
+    fontSize: 20,
+    //color: 'rgba(0,0,0,0.5)'  <- transparent text
+    color: 'black',
+    textAlign: "center",
+    margin: 30,
   },
   paragraph: {
     textAlign: "center"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Button } from "react-native";
+import { Platform, StyleSheet, Text, View, Button,TouchableOpacity } from "react-native";
+import { colors } from '../src/themes';
 
 export default class HomeScreen extends Component {
 
@@ -10,49 +11,37 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.headerText}>Welcome to NutriHealth!</Text>
-
-        <View style={[{ width: "90%", margin: 10, backgroundColor: "green" }]}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Symptom')}
-            title="Look for Recipes"
-            color="#00B0FF"
-          />
-        </View>
-
-        <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Favorites')}
-            title="Cook Your Favorites"
-            color="#EC407A"
-          />
-        </View>
-
-        <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Shopping')}
-            title="Lets go Shopping"
-            color="#1DE9B6"
-          />
-        </View>
-
-        <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-          <Button
-            onPress={() => this.props.navigation.navigate('FAQ')}
-            title="Questions"
-            color="#FF3D00"
-          />
-        </View>
-
-        <View style={[{ width: "90%", margin: 10, backgroundColor: "red" }]}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Contact')}
-            title="Contact Us"
-            color="brown"
-          />
-        </View>
-
+      <View style={styles.dividers}>
+        <TouchableOpacity>
+          <View style={styles.container} backgroundColor={colors.primary}>
+            <Text style={styles.headerText}>Explore NutriHealth</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Symptom')}>
+          <View style={styles.container}>
+            <Text style={styles.buttonText}>What are your Symptoms?</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Favorites')}>
+          <View style={styles.container}>
+            <Text style={styles.buttonText}>Cook Your Favorites</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Shopping')}>
+          <View style={styles.container}>
+            <Text style={styles.buttonText}>Lets go Shopping</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('FAQ')}>
+          <View style={styles.container}>
+            <Text style={styles.buttonText}>Questions?</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Contact')}>
+          <View style={styles.container}>
+            <Text style={styles.buttonText}>Contact Us</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -60,23 +49,52 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    //padding:10,
+    //flex: 1,
+    //justifyContent: "center",
+    //backgroundColor: colors.primary,
+    //borderTopWidth:2,
+    //borderTopColor: colors.primary,
+    borderBottomWidth:2,
+    borderBottomColor: colors.primary,
+    height: 100,
+
+  },
+  dividers:{
+    //left: 10,
+    position: 'absolute',
+    //bottom: 60,
+    width: "100%",
+
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 30,
+    fontWeight: "bold",
+    alignItems: "center",
     textAlign: "center",
-    margin: 10,
-    fontWeight: "bold"
+    margin: 30,
   },
   button: {
     padding: 20,
-    fontSize: 15,
-    fontFamily: "arial",
-    width: 400,
+    margin: 10,
+    //width: 400,
     height: 40,
-    textAlign: "center"
+    backgroundColor: "gray",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  buttonText:{
+    fontSize: 20,
+    //color: 'rgba(0,0,0,0.5)'  <- transparent text
+    color: 'black',
+    textAlign: "center",
+    margin: 30,
+  },
+  heading: {
+    fontSize: 25,
+    textAlign: "center",
+    margin: 10,
+    fontWeight: "bold",
+    color: 'white'
   }
 });

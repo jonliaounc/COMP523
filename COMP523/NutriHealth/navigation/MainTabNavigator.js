@@ -11,6 +11,7 @@ import ShopListScreen from '../screens/ShopListScreen';
 import ListScreen from '../screens/ListScreen.js';
 import FAQScreen from '../screens/FAQScreen';
 import ContactScreen from '../screens/Contact.js'
+import { colors } from '../src/themes';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -19,6 +20,13 @@ const HomeStack = createStackNavigator({
   Shopping: ShopListScreen,
   FAQ: FAQScreen,
   Contact: ContactScreen
+},  {
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: colors.primary
+    },
+    headerTintColor: 'white'
+  }
 });
 
 HomeStack.navigationOptions = {

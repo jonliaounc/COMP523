@@ -1,6 +1,6 @@
 import React from 'react';
-import { ActivityIndicator, Text, View, StyleSheet, Button } from 'react-native';
-
+import { ActivityIndicator, Text, View, StyleSheet, Button, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { colors } from '../src/themes';
 export default class RecipesScreen extends React.Component {
 
   constructor(props){
@@ -45,27 +45,34 @@ export default class RecipesScreen extends React.Component {
     }
 
     return(
-      <View style={styles.container}>
-        <Text style={styles.headerText}>{this.state.RecipeIndex}</Text>
-          <Text style={styles.paragraph}> This is the name: {this.state.name} {'\n'}{'\n'}</Text>
-          <Text style={styles.paragraph}> This is the description: {this.state.description} {'\n'}{'\n'}</Text>
-          <Text style={styles.paragraph}> These are the ingredients:{'\n'}</Text>
+      <ScrollView style={styles.dividers}>
+        <View style={styles.borderBottom}>
+          <Text style={styles.headerText}> {this.state.name} {'\n'}{'\n'}</Text>
+        </View>
+        <View>
+          <Text style={styles.paragraphCenter}> Description: {this.state.description} {'\n'}{'\n'}</Text>
+        </View>
+        <View>
+          <Text style={styles.identityText}> Ingredients:{'\n'}</Text>
           {
             this.state.ingredients.map((param, i) => {
               return (
-                <Text style={styles.paragraph}> {param} </Text>
+                <Text style={styles.paragraphLeft}> {param} </Text>
               )
             })
           }
-          <Text style={styles.paragraph}>{'\n'}{'\n'}These are the directions:{'\n'}</Text>
+        </View>
+        <View>
+          <Text style={styles.identityText}>{'\n'}{'\n'}Directions:{'\n'}</Text>
           {
             this.state.directions.map((param, i) => {
               return (
-                <Text style={styles.paragraph}> {param} </Text>
+                <Text style={styles.paragraphLeft}> {param} {'\n'}</Text>
               )
             })
           }
-      </View>
+        </View>
+      </ScrollView>
 
     );
   }
@@ -77,14 +84,44 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
+    // borderBottomWidth:2,
+    // borderBottomColor: colors.primary,
+    // height: 100,
+  },
+  borderBottom:{
+    borderBottomWidth:2,
+    borderBottomColor: colors.primary,
+    height: 80,
+    padding: 0,
+    margin: 0,
+
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 25,
     textAlign: "center",
-    margin: 10,
+    margin: 23,
     fontWeight: "bold"
   },
-  paragraph: {
-    textAlign: "center"
-  }
+  dividers:{
+  //left: 10,
+  //position: 'absolute',
+  //bottom: 160,
+    width: "100%",
+    flex:1,
+  },
+  paragraphCenter: {
+    textAlign: "center",
+    margin: 20,
+    fontSize: 18,
+  },
+  paragraphLeft: {
+    textAlign: "left",
+    fontSize: 22,
+  },
+  identityText:{
+    fontSize: 23,
+  },
+  paragraphText:{
+
+  },
 });
