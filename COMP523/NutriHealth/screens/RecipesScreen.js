@@ -14,6 +14,7 @@ export default class RecipesScreen extends React.Component {
   }
 
   componentDidMount(){
+    //jon
     return fetch(link)
       .then((response) => response.json())
       .then((responseJson) => {
@@ -35,7 +36,7 @@ export default class RecipesScreen extends React.Component {
   }
 
   render(){
-
+    //eric
     if(this.state.isLoading){
       return(
         <View style={{flex: 1, padding: 20}}>
@@ -79,6 +80,7 @@ export default class RecipesScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  //eric
   container: {
     flex: 1,
     justifyContent: "center",
@@ -117,9 +119,12 @@ const styles = StyleSheet.create({
   paragraphLeft: {
     textAlign: "left",
     fontSize: 22,
+    padding: 10,
+    paddingRight: 10,
   },
   identityText:{
-    fontSize: 23,
+    fontSize: 25,
+    padding: 5,
   },
   paragraphText:{
 

@@ -12,6 +12,7 @@ export default class FAQScreen extends React.Component {
 
   render() {
     return (
+      //content: jon, styling: eric
         <View style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
         <DropDownItem
@@ -134,7 +135,7 @@ export default class FAQScreen extends React.Component {
     );
   }
 }
-
+//eric
 const styles = StyleSheet.create({
   container: {
     flex: 1,

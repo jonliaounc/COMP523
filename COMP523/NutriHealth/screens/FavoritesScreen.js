@@ -5,6 +5,7 @@ import { colors } from '../src/themes';
 export default class FavoritesScreen extends React.Component {
 
   static navigationOptions = {
+    //eric
     title: 'Favorites',
     headerTitleStyle:{
       color: 'black',
@@ -17,6 +18,7 @@ export default class FavoritesScreen extends React.Component {
 
   render() {
     return (
+      //eric & jon
       <View style={styles.dividers}>
         <TouchableOpacity>
           <View style={styles.container} backgroundColor={"gold"}>
@@ -55,6 +57,7 @@ export default class FavoritesScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  //eric
   container: {
     //padding:10,
     //flex: 1,

@@ -2,7 +2,17 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Button } from "react-native";
 
 export default class HomeScreen extends Component {
-
+  static navigationOptions = {
+    title: 'Contact',
+    headerTitleStyle:{
+      color: 'black',
+      fontSize: 20,
+      fontWeight: '400',
+      textAlign: 'center',
+      alignItems: 'center'
+    }
+  };
+  //jon
   render() {
     return (
       <View style={styles.container}>
@@ -15,6 +25,7 @@ export default class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  //eric 
   container: {
     flex: 1,
     justifyContent: "center",

@@ -16,6 +16,7 @@ export default class SymptomScreen extends React.Component {
   };
 
   render() {
+    //logic: jon, styling: eric
       const { navigate } = this.props.navigation
       return (
         <ScrollView style={styles.dividers}>

@@ -7,6 +7,7 @@ const IC_ARR_UP = require('../assets/images/up-arrow.png');
 
 type Props = {};
 export default class MapScreen extends Component<Props> {
+  //jon
   state = {
     contents: [
       {

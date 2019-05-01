@@ -6,16 +6,17 @@ var nameArr = [];
 
 export default class ListScreen extends React.Component {
 
+//jon
   constructor(props){
     super(props);
-//    nameArr = [];
+    nameArr = [];
     this.state = {
       isLoading: true,
       SymptomType: this.props.navigation.state.params.SymptomType
     }
     link = "https://fathomless-springs-92490.herokuapp.com/" + this.state.SymptomType;
   }
-
+//jon
   componentDidMount(){
     return fetch(link)
       .then((response) => response.json())
@@ -48,6 +49,7 @@ export default class ListScreen extends React.Component {
   }
 
   render(){
+    //refactored by eric
 
     if(this.state.isLoading){
       return(
@@ -110,6 +112,7 @@ export default class ListScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  //eric
   container: {
     padding:10,
     //flex: 1,

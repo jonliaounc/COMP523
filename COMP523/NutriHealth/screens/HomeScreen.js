@@ -11,6 +11,7 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
+      //logic: jon, styling: eric
       <View style={styles.dividers}>
         <TouchableOpacity>
           <View style={styles.container} backgroundColor={colors.primary}>
@@ -48,6 +49,7 @@ export default class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  //eric
   container: {
     //padding:10,
     //flex: 1,
